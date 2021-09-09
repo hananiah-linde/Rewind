@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Hananiah Linde</title>
+    <title>Rewind: A Coding Project By Hananiah Linde</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,7 +20,7 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"> <img src="img/tab_icon.svg" class="d-inline-block align-text-top"
-                    alt="logo" width="30" height="24"> APP NAME</a>
+                    alt="logo" width="30" height="24"> REWIND</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -37,7 +37,7 @@
                         <a class="nav-link active" aria-current="page" href="code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="http://github.com/hananiah-linde/Rewind">Git Repo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="http://hananiahlinde.com/">About</a>
@@ -54,17 +54,46 @@
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            //Call Hello World
-                            function HelloWorld() {
-                            alert("Hello World");
+                            //Get the string from the page - controller function
+                            function getValue() {
+                            
+                                document.getElementById("alert").classList.add("invisible");
+                                let userString = document.getElementById("userString").value;
+                                let revString = reverseString(userString);
+                                displayString(revString);
+                            
+                            }
+                            
+                            //Reverse the string - logic function
+                            function reverseString(userString) {
+                            
+                                let revString = [];
+                            
+                                //reverse a string using a for loop
+                                for (let index = userString.length - 1; index >= 0; index--) {
+                                    revString += userString[index];
+                                }
+                            
+                                return revString;
+                            
+                            }
+                            
+                            //Display the reversed string on the page - view function
+                            function displayString(revString) {
+                            
+                                document.getElementById("msg").innerHTML = `Your string reversed is: ${revString}`;
+                                document.getElementById("alert").classList.remove("invisible");
+                            
                             }
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World" </p>
+                    <p>The Code is structured in three functions following the principle of "separations of concerns".</p>
+                    <h5>Structure</h5>
+                    <p>There is one controller function which picks up the value from the page.</p>
+                    <p>The controller function then calls a logic function which handles the logic of reversing the string and passes it back to the controller.</p>
+                    <p>The controller function then calls a view function and passes the modified string to be displayed back to the user.</p>
                 </div>
             </div>
         </div>
